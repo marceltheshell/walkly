@@ -7,7 +7,6 @@ bcrypt = require("bcrypt");
 
 
 var UserSchema = new Schema({
-	name: {type: String, required: true}, 
 	email: {type: String, required: true}, 
 	passwordDigest: {type: String, required: true}, 
 	createdAt: {type: Date, default: Date.now()},
@@ -15,12 +14,11 @@ var UserSchema = new Schema({
 });
 
 //create a new user with a hashed password for signup
-UserSchema.statics.createSecure = function (name, email, password, cb) {
+UserSchema.statics.createSecure = function (email, password, cb) {
 	var _this = this; 
 	bcrypt.genSalt(function (err, salt) {
 		bcrypt.hash(password, salt, function (err, hash) {
-			var user = {
-				name: name, 
+			var user = { 
 				email: email, 
 				passwordDigest: hash
 			};

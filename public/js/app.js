@@ -1,9 +1,3 @@
-function getHomePage () {
-	$.get("/", function (response_data) {
-		console.log(response_data);
-	});
-}
-
 function getPersonalProfile () {
 	$.get("api/users/:id", function (response_data) {
 		console.log(response_data);
@@ -20,7 +14,7 @@ function renderUserName (res) {
 
 
 
-function manageBackground () {
+function changeBackgroundImages () {
 	var images = [
 	"http://www.carolhighsmithamerica.com/data/photos/86_1coit_tower_in_san_francisco.jpg", 
 	"http://highincomerealestate.com/wp-content/uploads/2014/09/SanFrancisco2.jpg",
@@ -37,7 +31,6 @@ function manageBackground () {
 			i = 0;
 		}
 		var url = 'url( ' + images[i] +')';
-		console.log(url);
 		$("#title").css("background-image", 
 			url);
 		$("#title").css("background-repeat", 'no-repeat');
@@ -47,9 +40,8 @@ function manageBackground () {
 
 
 $(document).ready(function(){
-	getHomePage();
 	getPersonalProfile();
-	manageBackground();
+	changeBackgroundImages();
 	$('#myModal').on('shown.bs.modal', function () {
   		$('#myInput').focus()
 	})

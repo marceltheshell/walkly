@@ -109,9 +109,9 @@ app.get("/api/coolSpots", function (req, res) {
 })
 
 //signup api route
-app.post("/api/users", function createUser (req, res) {
+app.post("/users", function createUser (req, res) {
 	console.log("entering the signup route")
-	db.User.createSecure(req.body.name, req.body.email, req.body.password, function (err, users) {
+	db.User.createSecure(req.body.email, req.body.password, function (err, users) {
 		if(err) {
 			console.log("error!", err);
 			res.redirect("/");
