@@ -1,36 +1,37 @@
 TODO:
 
-	Backend
-	2. make a button on the popup window to save 'at least' the location name
-		a. found the button 
-		b. On click(button) push the name of the coolspot into the coolspotsarray (where is cool array?)
+Backend
+[X] pump up your geoJson list.
+[X] set up your db to have coolspotSchema
+[] make a button on the popup window to save 'at least' the location name 
+[] On click(button) push the name of the coolspot into the coolspotsarray (where is cool array?)
+[] store that location into coolSpot db for a particular user
+						req.currentUser(function(err, user) {
+			    user.ideas.push(req.body.idea);
+			    user.save(function (err) {
+			      if (err) { return console.log(err); }
+			      console.log(req.body.idea , " has been added for user " + user.email);
+			    });
+			  });
+			      res.redirect('/profile');
+
+
+			});
+[] display on your map page somewhere the saved spots
+[] if you have extra time, make an option to delete your account.
+[] is there a meetup this day for walking?
+[] INclude weather and date api. 
 
 
 
-	3. store that location into coolSpot db for a particular user
-								req.currentUser(function(err, user) {
-					    user.ideas.push(req.body.idea);
-					    user.save(function (err) {
-					      if (err) { return console.log(err); }
-					      console.log(req.body.idea , " has been added for user " + user.email);
-					    });
-					  });
-					      res.redirect('/profile');
-
-
-					});
-	4. display on your map page somewhere the saved spots
-	5. if you have extra time, make an option to delete your account.
-	6. is there a meetup this day for walking?
-	7. INclude weather and date api. 
+Frontend
+[X] Fix modal
+[X] move shadow up
+[] make area code searcher
+[] make two modals switch out with each other
+[] modals/HTML pages for the what?/jobs links
 
 
 
-	Frontend
-	1. move shadow up
-	2. you are signed in as Marcel.degas@gmail.com (logout?)
 
 
-DONE:
-	0. pump up your geoJson list.
-	1. set up your db to have coolspotSchema

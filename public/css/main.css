@@ -4,6 +4,11 @@
   font-family: optima;
 }
 
+#shadow {
+  position: relative;
+  bottom: 83px;
+}
+
 #Jobs {
   color: yellow;
   font-size: 20px;
@@ -11,13 +16,16 @@
 }
 
 #sign-up {
+    text-align: center;
     background: none;
     padding: 12px 22px;
-}
-
-#sign-up {
     border: 2px solid yellow;
     color: yellow;
+}
+
+#zip-code-bar {
+
+
 }
 
 #shadow {
