@@ -13,7 +13,9 @@ function fetchPhotos(){
         response.photos.photo.forEach(function renderInfo(pic){
             // add info row
             var title = pic.title;
+            var 
             $("#info").append("<p>" + title + "<p>");
+            // $("#photos").append("<p>" + title + "<p>");
         })
     });
 };
