@@ -1,36 +1,50 @@
-#What {
+/*#What {
   color: yellow;
   font-size: 20px;
   font-family: optima;
-}
+}*/
 
-#shadow {
-  position: relative;
-  bottom: 83px;
-}
-
-#Jobs {
+/*#Jobs {
   color: yellow;
   font-size: 20px;
   font-family: optima;
+}*/
+
+html,
+body {
+  background-image:
+    linear-gradient(
+      to left, 
+      cadetblue, #004C4C
+    );
 }
 
-#sign-up {
-    text-align: center;
-    background: none;
-    padding: 12px 22px;
-    border: 2px solid yellow;
-    color: yellow;
+.modals {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-#zip-code-bar {
-
-
+.modal-style {
+  text-align: center;
+  background: none;
+  padding: 12px 22px;
+  border: 2px solid yellow;
+  color: yellow;
 }
 
-#shadow {
+.shadow{
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
   z-index: 2;
 }
+
+
 
 #title {
    z-index: 1; 
@@ -42,20 +56,11 @@
    letter-spacing: -25px;
    /*arial black, impact, rockwell extra bold*/
    color: white;  /* Fallback: assume this color ON TOP of image */
-   background: url(http://highincomerealestate.com/wp-content/uploads/2014/09/SanFrancisco2.jpg) no-repeat;
+   background: url(../images/big-city.jpeg) no-repeat;
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    background-position: center bottom -10px;
    /*background-size: 30% 20%*/ 
-}
-
-.first-container {
-	/*background-color: cadetblue;*/
-  background-image:
-    linear-gradient(
-      to left, 
-      cadetblue, #004C4C
-    );
 }
 
 .profile {
@@ -65,44 +70,7 @@
   margin: 1em;
 }
 
-.second-container {
-  background-color: white;
-  height: 500px;
-}
 
-.third-container {
-  background-color: cadetblue;
-  height: 300px;
- /* border-color: red;*/
-}
-
-.fourth-container {
-  background-color: cadetblue;
-  height: 300px;
-  border-color: white;
-}
-
-.fifth-container {
-  background-color: cadetblue;
-  height: 300px;
-  border-color: white;
-}
-
-.sixth-container {
-  background-color: white;
-  height: 300px;
-  border-color: white;
-}
-
-.full-width {
-  width: 100% !important;
-}
-/*.full-width {
-background-image: (im;
-no-repeat
-cover
-*/
-/*}*/
 .img-box {
 max-width:100%;
 max-height:100%;

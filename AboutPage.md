@@ -1,1 +1,0 @@
-Walk.ly was created for people who love exploring new cities! Have you ever found yourself in a new city for a few hours (or even a few day) and wanted to explore the best that city had to offer on foot?  Simply open up Walk.ly, enter the area code of your city, and watch as points of interest unfold before you.

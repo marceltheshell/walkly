@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -20,17 +21,14 @@
     "bcrypt": "^0.8.5",
     "body-parser": "^1.13.3",
     "bower": "^1.5.2",
+    "dotenv": "^2.0.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "keygenerator": "^1.0.4",
     "method-override": "^2.3.5",
     "mongoose": "^4.1.5",
-    "nodemon": "^1.4.1"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install"   
-   }
-
+    "nodemon": "^1.4.1",
+    "stormpath": "^0.18.2"
+  }
 }

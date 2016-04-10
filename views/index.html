@@ -16,134 +16,49 @@
   
 </head>
 <body class="full-width">
-	<div class="first-container full-width">
-		<div class="container">
-		<!-- toplinks -->
-			<header>
-				<div id="links" class="text-center">
-					<button type="button" class="btn btn-link" id="What">What?</button>
-					<button type="button" class="btn btn-link" id="Jobs">Jobs</button>
-				</div>
-			</header>
-			<!-- toplinks -->
-			<!-- title -->
-			<div class="row">
-				<h1 id="title" class="text-center"><strong id="titletext">Walk.ly</strong></h1>
-			</div>
-			<!-- title -->
-			<!-- shadow -->
-			<div id="shadow" class="text-center">
-				<img src="http://holyconnection.tv/topbanner/bg.png">
-			</div>
-			<!-- shadow -->
-
-			<!-- <Open: the signin modal> -->
-			<div>
-				<button type="button" id="sign-up" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sign Up</button>
-			</div>
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="exampleModalLabel">Tell Us About You</h4>
-			      </div>
-			      <div class="modal-body">
-			        <form method="POST" action="/users" id="sign-up">
-			          <div class="form-group">
-			            <input name="email" type="text" class="form-control" id="email" placeholder="Email" required>
-			          </div>
-			          <div class="form-group" >
-						<input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-			          </div>
-			          <div class="form-group" >
-						<input name="confirm-password" type="password" class="form-control" id="confirm-password" placeholder="Confirm your Password" required>
-			          </div>
-			          <div class="modal-footer">
-			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			       		<button type="submit" class="btn btn-primary">Sign Up</button>
-			      	  </div>
-			        </form>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-		</div>
-		<!-- <close the signin modal> -->
-		<div class="second-container full-width">
-			<div class="container">	
-				<!-- <open: the zip code search > -->
-		    	<div id="zip-div">
-			    	<form method="POST" action="/api/maps"  class="form-inline" id="zip-code-bar">
-			    	  <input name="zip-code" type="text" class="form-control" id="zip-code" placeholder="Enter the zip code of the place you wish to explore!" required>
-				    </form>
-				</div>
-				<!-- <close: the zip code search > -->
-			</div>
+	<div class="container">
+		<div class="row">
+			<h1 id="title" class="text-center"><strong id="titletext">Walk.ly</strong></h1>
 		</div>
 
-		<div class="third-container full-width row outline">
-			<div class="col-md-4 col-sm-4 img-box">
-				<img src="/static/images/bridge-walkly.jpeg" class="img-responsive" height="3000" width="3000">
-			</div>
-			<div class="col-md-8 col-sm-8">
-				<h2>Discover your world</h2>
-				<h4>Walkly is designed for people who live on the go and love discovering interesting new locations.  Try us out.</h4>
-			</div>
+		<div  class="shadow">
+			<img src="/static/images/shadow.png">
 		</div>
-		<div class="container fourth-container full-width row outline">
-			<div class="col-md-8 col-sm-8">
-				<h2>Mobile Friendly</h2>
-				<h4>Open the application on your phone and search for pictures of interesting locations closeby</h4>
-			</div>
-			<div class="col-md-4 col-sm-4 img-box">
-				<img src="/static/images/map-phone.jpeg" class="img-responsive" height="300" width="700">
-			</div>
+
+
+		<div class="modals">
+			<button type="button" class="modal-style btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal" data-whatever="@mdo">Sign-up</button>
+			<button type="button" class="modal-style btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Log-in</button>
 		</div>
-		<div class="container fifth-container full-width row outline">
-			<div class="col-md-4 col-sm-4 img-box">
-				<img src="/static/images/big-city.jpeg" class="img-responsive" height="300" width="700">
-			</div>
-			<div class="col-md-8 col-sm-8">
-				<h2>Wherever you are, we can help</h2>
-				<h4>Walkly can be used in any location across the world where people have access to Flickr</h4>
-			</div>
-		</div>
-		<div class="container sixth-container full-width">
-		<!-- <Open: the signin modal> -->
-			<div>
-				<button type="button" id="sign-up" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sign Up</button>
-			</div>
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="exampleModalLabel">Tell Us About You</h4>
-			      </div>
-			      <div class="modal-body">
-			        <form method="POST" action="/users" id="sign-up">
-			          <div class="form-group">
-			            <input name="email" type="text" class="form-control" id="email" placeholder="Email" required>
-			          </div>
-			          <div class="form-group" >
-						<input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-			          </div>
-			          <div class="form-group" >
-						<input name="confirm-password" type="password" class="form-control" id="confirm-password" placeholder="Confirm your Password" required>
-			          </div>
-			          <div class="modal-footer">
-			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			       		<button type="submit" class="btn btn-primary">Sign Up</button>
-			      	  </div>
-			        </form>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-		</div>
-		<!-- <close the signin modal> -->
-			
+
+
+
+
+		<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="exampleModalLabel">Helloooo</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form method="POST" action="/users" id="sign-up">
+		          <div class="form-group">
+		            <input name="email" type="text" class="form-control" id="email" placeholder="Email" required>
+		          </div>
+		          <div class="form-group" >
+					<input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+		          </div>
+		          <div class="form-group" >
+					<input name="confirm-password" type="password" class="form-control" id="confirm-password" placeholder="Confirm your Password" required>
+		          </div>
+		          <div class="modal-footer">
+		       		<button type="submit" class="btn btn-primary">Sign Up</button>
+		      	  </div>
+		        </form>
+		      </div>
+		    </div>
+		  </div>
 		</div>
 	</div>
 </body>
