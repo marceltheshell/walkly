@@ -28,7 +28,7 @@
 
 		<div class="modals">
 			<button type="button" class="modal-style btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal" data-whatever="@mdo">Sign-up</button>
-			<button type="button" class="modal-style btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Log-in</button>
+			<button type="button" class="modal-style btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal" data-whatever="@mdo">Log-in</button>
 		</div>
 
 
@@ -39,18 +39,21 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="exampleModalLabel">Helloooo</h4>
+		        <h4 class="modal-title" id="exampleModalLabel">Create your profile and start exploring</h4>
 		      </div>
 		      <div class="modal-body">
-		        <form method="POST" action="/users" id="sign-up">
+		        <form method="POST" action="/signup" id="sign-up">
 		          <div class="form-group">
-		            <input name="email" type="text" class="form-control" id="email" placeholder="Email" required>
+		            <input name="signUpGivenName" type="text" class="form-control" id="signUpGivenName" placeholder="First Name" required>
+		          </div>
+		          <div class="form-group">
+		            <input name="signUpsurame" type="text" class="form-control" id="signUpsurame" placeholder="Last Name" required>
+		          </div>
+		          <div class="form-group">
+		            <input name="signUpEmail" type="text" class="form-control" id="signUpEmail" placeholder="Email" required>
 		          </div>
 		          <div class="form-group" >
-					<input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-		          </div>
-		          <div class="form-group" >
-					<input name="confirm-password" type="password" class="form-control" id="confirm-password" placeholder="Confirm your Password" required>
+					<input name="signUpPassword" type="password" class="form-control" id="signUpPassword" placeholder="Password" required>
 		          </div>
 		          <div class="modal-footer">
 		       		<button type="submit" class="btn btn-primary">Sign Up</button>
@@ -60,6 +63,32 @@
 		    </div>
 		  </div>
 		</div>
+
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="exampleModalLabel">Login to your account</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form method="POST" action="/login" id="login">
+		          <div class="form-group">
+		            <input name="loginEmail" type="text" class="form-control" id="loginEmail" placeholder="Email" required>
+		          </div>
+		          <div class="form-group" >
+					<input name="loginPassword" type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+		          </div>
+		          <div class="modal-footer">
+		       		<button type="submit" class="btn btn-primary">Login</button>
+		      	  </div>
+		        </form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	
+
 	</div>
 </body>
 </html>

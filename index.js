@@ -8,6 +8,8 @@ var ejs = require("ejs");
 var keygen = require("keygenerator");
 var methodOverride = require("method-override");
 var views = path.join(process.cwd(), "views/");
+var morgan = require('morgan');
+var pry = require('pryjs');
 require('dotenv').config();
 
 //stormpath
@@ -18,10 +20,7 @@ var apiKey = new stormpath.ApiKey(
 );
 var client = new stormpath.Client({ apiKey: apiKey });
 var applicationHref = process.env.STORMPATH_APPLICATION_HREF;
-
-client.getApplication(applicationHref, function(err, application) {
-  console.log('Application:', application);
-});
+var application;
 
 //stormpath-end
 
@@ -30,116 +29,64 @@ app.use("/vendor", express.static("bower_components"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
+app.use(morgan('dev'));
 
-
-
-
-// //////////////////////////////////////////////
-// // create a session
-// app.use(
-// 	session({
-// 		//use keygen to generate a secret key
-// 		secret: keygen._({specials: true}),
-// 		resave: false, 
-// 		saveUninitialized: true
-// 	})
-// );
-
-// //////////////////////////////////////////////
-// // extending the req object to manage sessions
-// app.use(function (req, res, next) {
-// 	//login a user
-// 	req.login = function (user) {
-// 		req.session.userId = user._id; 
-// 	};
-// 	//find the current user
-// 	req.currentUser = function (cb) {
-// 		db.User.findOne({_id: req.session.userId }, function (err, user) {
-// 			req.user = user; 
-// 			cb(null, user);
-// 		})
-// 	};
-// 	//logout the current user
-// 	req.logout = function () {
-// 		req.session.userId = null;
-// 		req.user = null; 
-// 	}
-// 	//call the middleward in the stack
-// 	next();
-// });
-
-//////////////////////////////////////////////
-// routes
-
+////////////////////////////////////// api routes /////////////////////////////////////////////
 
 app.get("/", function (req, res) {
-	res.sendFile(views + "/index.html");
+	client.getApplication(applicationHref, function(err, application) {
+	  	console.log('Application_inside:', application);
+		res.sendFile(views + "/index.html");
+	});  
 });
 
-//signup api route
-app.post("/users", function createUser (req, res) {
-	db.User.createSecure(req.body.email, req.body.password, function (err, users) {
-		if(err) {
-			res.redirect("/");
-		} else {
-			req.login(users);
-			res.redirect("/maps");
-		}
+
+app.post("/signup", function(req, res) {
+	client.getApplication(applicationHref, function(err, application) {
+	  	
+	  	var account = {
+			  givenName: req.body.signUpGivenName,
+			  surname: req.body.signUpsurame,
+			  username: req.body.signUpEmail,
+			  email: req.body.signUpEmail,
+			  password: req.body.signUpPassword
+			};
+
+			application.createAccount(account, function(err, createdAccount) {
+				if (err) {
+					console.log(err);
+				}
+			  console.log('Account:', createdAccount);
+			});
+			
+			res.sendFile(views + "/maps.html");
+		
+	});
+}); 
+
+app.post("/login", function (req, res) {
+	client.getApplication(applicationHref, function(err, application) {
+		var authRequest = {
+		  username: req.body.loginEmail,
+		  password: req.body.loginPassword
+		};
+
+		application.authenticateAccount(authRequest, function(err, result) {
+			if (err) {
+				console.log(err);
+				res.sendFile(views + "/index.html");
+				return 
+			}
+
+		  result.getAccount(function(err, account) {
+		    console.log('Account:', account);
+		    res.sendFile(views + "/maps.html");
+		  });
+
+		});
 	});
 });
 
-
-app.get("/maps", function (req, res) {
-	req.currentUser(function (err, currentUser) {
-		if (err || currentUser === null) {
-			res.redirect("/")
-		} else {
-		res.sendFile(views + "/maps.html");
-		}
-	});
-});
-
-app.get("/api/users/:id", function (req, res) {
-	req.currentUser(function (err, currentUser) {
-		if (err || currentUser === null) {
-			res.redirect("/")
-		} else {
-			res.send(currentUser);
-		}
-	});
-});
-
-
-app.get("/profiles", function (req, res) {
-	req.currentUser(function (err, currentUser) {
-		if (err || currentUser === null) {
-			res.redirect("/")
-		} else {
-		res.sendFile(views + "/profiles.html");
-		}
-	});
-});
-
-
-app.get("/api/coolSpots", function (req, res) {
-	db.CoolSpot.find({}, function (err, spots) {
-		res.send(spots);
-	});
-});
-
-
-
-//login api route
-app.post(["/login", "/api/sessions"], function signInUser (req, res) {
-	db.User.authenticate(req.body.email, req.body.password, function (err, users) {
-		if(err) {
-			res.redirect("/");
-		} else {
-			req.login(users);
-			res.redirect("/maps");
-		}
-	});
-});
 
 //logout api route
 app.delete(["/sessions", "/logout"], function (req, res) {
@@ -147,16 +94,38 @@ app.delete(["/sessions", "/logout"], function (req, res) {
 	res.redirect("/");
 }); 
 
+		// application.getAccounts({}, function(err, accounts) {
+		//   accounts.each(function(account, callback) {
+		//     console.log('Account:', account);
+		//     callback();
+		//   }, function(err) {
+		//     console.log('Finished iterating over accounts.');
+		//   });
+		// });
 
-//search for a city 
-app.post("/api/city", function handleCity (req, res) {
-	res.send(req.body)
+
+// req.currentUser(function (err, currentUser) {
+	// 	if (err || currentUser === null) {
+	// 		res.redirect("/")
+	// 	} else {
+		// res.sendFile(views + "/maps.html");
+	// 	}
+	// });
+
+app.get("/maps", function (req, res) {
+	res.sendFile(views + "/maps.html");
+	
 });
 
 
-
-//////////////////////////////////////////////////////
 // Server
-app.listen((process.env.PORT || 3000), function (){
-  console.log("listening on port 3000");
-});
+// app.on(stormpath.ready, function() {
+	app.listen((process.env.PORT || 3000), function (){
+	  console.log("listening on port 3000");
+	});	
+// });
+
+
+
+
+

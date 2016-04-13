@@ -4,7 +4,7 @@ var map;
 
 
 $(document).ready(function() {
-    fetchPhotos();
+    // fetchPhotos();
 
 });
 
@@ -13,7 +13,6 @@ function fetchPhotos(){
         response.photos.photo.forEach(function renderInfo(pic){
             // add info row
             var title = pic.title;
-            var 
             $("#info").append("<p>" + title + "<p>");
             // $("#photos").append("<p>" + title + "<p>");
         })
@@ -21,9 +20,9 @@ function fetchPhotos(){
 };
 
 
-
-
-
-
-
-
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 37.77, lng: -122.41},
+        zoom: 8
+    });
+}
